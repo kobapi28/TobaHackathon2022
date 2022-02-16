@@ -1,3 +1,6 @@
+# NIT Tobahackathonに提出する作品です
+prodoct name: 未定
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
