@@ -3,5 +3,5 @@ export const BookCard = () => {
     <div>
       <h1>BookCard</h1>
     </div>
-  )
-}
+  );
+};
