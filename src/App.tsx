@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { UserInfoBlock } from './components';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           Learn React
         </a>
         <p>test</p>
+        <UserInfoBlock></UserInfoBlock>
       </header>
     </div>
   );
