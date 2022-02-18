@@ -33,7 +33,7 @@ const getBookReviewsMock = async (
       },
       userName: 'oonya',
       review: 3,
-      read_at: new Date(),
+      readAt: new Date(),
     },
     {
       book: {
@@ -44,7 +44,7 @@ const getBookReviewsMock = async (
       },
       userName: 'shoma',
       review: 5,
-      read_at: new Date(),
+      readAt: new Date(),
     },
   ];
 };
