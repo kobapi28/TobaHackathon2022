@@ -1,3 +1,4 @@
+// Figmaでお気に入りの本というところに並んでいるカードのコンポーネント
 export const BookCard = () => {
   return (
     <div>

@@ -1,3 +1,4 @@
+// ユーザー画面の上部のユーザー情報をまとめたコンポーネント
 export const UserInfoBlock = () => {
   return (
     <div>
