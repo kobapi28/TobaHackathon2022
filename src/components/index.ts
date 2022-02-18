@@ -6,3 +6,4 @@ export * from './BookGraph';
 export * from './Book';
 export * from './Books';
 export * from './FavoriteBookGroup';
+export * from './Header';
