@@ -1,3 +1,4 @@
+// 一覧画面のそれぞれのユーザーのグラフ
 export const BookGraph = () => {
   return (
     <div>
