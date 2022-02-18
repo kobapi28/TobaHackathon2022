@@ -1,4 +1,4 @@
-import { Book } from './Book';
+import { Book } from '@/types/Book';
 
 export type BookReview = {
   book: Book;
