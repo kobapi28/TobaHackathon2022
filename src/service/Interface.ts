@@ -1,5 +1,5 @@
-import { Book } from '../types/Book';
-import { BookReview } from '../types/BookReview';
+import { Book } from '@/types/Book';
+import { BookReview } from '@/types/BookReview';
 
 export interface IBookReviewClient {
   search: (title: string) => Promise<Array<Book>>;

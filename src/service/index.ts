@@ -1,6 +1,6 @@
-import { IBookReviewClient } from './Interface';
-import { Book } from '../types/Book';
-import { BookReview } from '../types/BookReview';
+import { IBookReviewClient } from '@/service/Interface';
+import { Book } from '@/types/Book';
+import { BookReview } from '@/types/BookReview';
 const searchMock = async (title: string): Promise<Array<Book>> => {
   return [
     {
