@@ -3,3 +3,6 @@
 export * from './UserInfoBlock';
 export * from './BookCard';
 export * from './BookGraph';
+export * from './Book';
+export * from './Books';
+export * from './FavoriteBookGroup';
