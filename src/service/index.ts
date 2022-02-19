@@ -52,7 +52,7 @@ const getBookReviewsMock = async (
               },
               userName: 'shoma',
               review: 5,
-              readAt: new Date(),
+              readAt: new Date('1995-12-17T03:24:00'),
             },
           ],
         },
