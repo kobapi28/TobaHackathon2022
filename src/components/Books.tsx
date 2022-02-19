@@ -1,8 +1,16 @@
 // BookGraph内の複数の本(Bookコンポーネント)をまとめたコンポーネント
-export const Books = () => {
+import { Book } from './Book';
+import { MonthlyBookReviews } from '../types/MonthlyBookReviews';
+
+type Props = MonthlyBookReviews;
+
+export const Books: React.FC<Props> = ({ yearMonth, bookReviews }) => {
   return (
     <div>
-      <h1>Books</h1>
+      <h1>{yearMonth}</h1>
+      {bookReviews.map((bookReview) => (
+        <Book bookReview={bookReview} />
+      ))}
     </div>
   );
 };
