@@ -10,7 +10,9 @@ export const Graph = () => {
   >([]);
 
   useEffect(() => {
-    BookReviewClient.booksReadByEachUser()
+    // ここのuserIdをstoreからとってくるとかそういう処理は必要
+    const userId = 'sample';
+    BookReviewClient.getBookReviews(userId)
       .then((res) => {
         setBooksReadByEachUser(res);
       })
