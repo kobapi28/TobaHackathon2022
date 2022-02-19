@@ -1,6 +1,7 @@
 // 一覧ページ
 import { useEffect, useState } from 'react';
 import { BookGraph } from '../components';
+import { Rating } from '../components/Rating';
 import { BookReviewClient } from '../service/index';
 import { BooksReadByEachUser } from '../types/BooksReadEachUser';
 
@@ -8,6 +9,9 @@ export const Graph = () => {
   const [booksReadByEachUser, setBooksReadByEachUser] = useState<
     BooksReadByEachUser[]
   >([]);
+
+  // test
+  const [review, setReview] = useState(1);
 
   useEffect(() => {
     // ここのuserIdをstoreからとってくるとかそういう処理は必要
@@ -30,6 +34,8 @@ export const Graph = () => {
           key={booksReadByUser.userName}
         />
       ))}
+      {/* test */}
+      <Rating review={review} setReview={setReview} />
     </div>
   );
 };
