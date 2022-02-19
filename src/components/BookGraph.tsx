@@ -15,6 +15,7 @@ export const BookGraph: React.FC<Props> = ({
         <Books
           yearMonth={monthlyBookReview.yearMonth}
           bookReviews={monthlyBookReview.bookReviews}
+          key={monthlyBookReview.yearMonth}
         />
       ))}
     </div>

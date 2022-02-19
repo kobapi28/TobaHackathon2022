@@ -26,6 +26,7 @@ export const Graph = () => {
         <BookGraph
           monthlyBookReviews={booksReadByUser.monthlyBookReviews}
           userName={booksReadByUser.userName}
+          key={booksReadByUser.userName}
         />
       ))}
     </div>

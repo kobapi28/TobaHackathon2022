@@ -9,7 +9,7 @@ export const Books: React.FC<Props> = ({ yearMonth, bookReviews }) => {
     <div>
       <h1>{yearMonth}</h1>
       {bookReviews.map((bookReview) => (
-        <Book bookReview={bookReview} />
+        <Book bookReview={bookReview} key={bookReview.readAt.toString()} />
       ))}
     </div>
   );
