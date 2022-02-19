@@ -5,6 +5,5 @@ import { BooksReadByEachUser } from '../types/BooksReadEachUser';
 export interface IBookReviewClient {
   search: (title: string) => Promise<Array<Book>>;
   storeBookReview: (bookReview: BookReview) => Promise<null>;
-  getBookReviews: (userId: string) => Promise<Array<BookReview>>;
-  booksReadByEachUser: () => Promise<Array<BooksReadByEachUser>>;
+  getBookReviews: (userId: string) => Promise<Array<BooksReadByEachUser>>;
 }
