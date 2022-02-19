@@ -1,6 +1,7 @@
-import { Box, Image, Text } from '@chakra-ui/react';
+import { Box, Image } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { BookReview } from '../types/BookReview';
+import { Rating } from './Rating';
 
 // BookGraph内の1つの本を扱うコンポーネント
 type Props = {
@@ -17,6 +18,7 @@ export const Book: React.FC<Props> = ({ bookReview }) => {
     height: 0,
     width: 0,
   });
+
   const height: number = 250;
 
   const getImageSize = (e: any) => {
@@ -41,15 +43,15 @@ export const Book: React.FC<Props> = ({ bookReview }) => {
         alt='bookImage'
         onLoad={(e) => getImageSize(e)}
       />
-      <Text
+      <Box
         position='absolute'
         left='0px'
         bottom='0px'
         background='gray.600'
         width='100%'
       >
-        {bookReview.review}
-      </Text>
+        <Rating review={bookReview.review} />
+      </Box>
     </Box>
   );
 };
