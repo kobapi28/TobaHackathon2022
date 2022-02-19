@@ -1,6 +1,7 @@
 import { IBookReviewClient } from './Interface';
 import { Book } from '../types/Book';
 import { BookReview } from '../types/BookReview';
+import { BooksReadByEachUser } from '../types/BooksReadEachUser';
 const searchMock = async (title: string): Promise<Array<Book>> => {
   return [
     {
@@ -48,8 +49,65 @@ const getBookReviewsMock = async (
     },
   ];
 };
+
+const booksReadByEachUserMock = async (): Promise<
+  Array<BooksReadByEachUser>
+> => {
+  return [
+    {
+      userName: 'shoma',
+      monthlyBookReviews: [
+        {
+          yearMonth: '2022.02',
+          bookReviews: [
+            {
+              book: {
+                title:
+                  'SCRUM BOOT CAMP THE BOOK【増補改訂版】 スクラムチームではじめるアジャイル開発',
+                img: 'https://images-na.ssl-images-amazon.com/images/I/71591oKcHWL.jpg',
+                link: 'https://www.amazon.co.jp/-/en/dp/4798163686/?coliid=I3C3Y6TXT3F0BX&colid=10WYP57Z19TPE&psc=1&ref_=lv_ov_lig_dp_it',
+              },
+              userName: 'shoma',
+              review: 5,
+              readAt: new Date(),
+            },
+            {
+              book: {
+                title:
+                  'SCRUM BOOT CAMP THE BOOK【増補改訂版】 スクラムチームではじめるアジャイル開発',
+                img: 'https://images-na.ssl-images-amazon.com/images/I/71591oKcHWL.jpg',
+                link: 'https://www.amazon.co.jp/-/en/dp/4798163686/?coliid=I3C3Y6TXT3F0BX&colid=10WYP57Z19TPE&psc=1&ref_=lv_ov_lig_dp_it',
+              },
+              userName: 'shoma',
+              review: 5,
+              readAt: new Date(),
+            },
+          ],
+        },
+        {
+          yearMonth: '2022.01',
+          bookReviews: [
+            {
+              book: {
+                title:
+                  'SCRUM BOOT CAMP THE BOOK【増補改訂版】 スクラムチームではじめるアジャイル開発',
+                img: 'https://images-na.ssl-images-amazon.com/images/I/71591oKcHWL.jpg',
+                link: 'https://www.amazon.co.jp/-/en/dp/4798163686/?coliid=I3C3Y6TXT3F0BX&colid=10WYP57Z19TPE&psc=1&ref_=lv_ov_lig_dp_it',
+              },
+              userName: 'shoma',
+              review: 5,
+              readAt: new Date(),
+            },
+          ],
+        },
+      ],
+    },
+  ];
+};
+
 export const BookReviewClient: IBookReviewClient = {
   search: searchMock,
   storeBookReview: storeBookReviewMock,
   getBookReviews: getBookReviewsMock,
+  booksReadByEachUser: booksReadByEachUserMock,
 };
