@@ -13,19 +13,21 @@ export const Header = () => {
   //   console.log('ユーザーページへの遷移');
   // };
   return (
-    <Flex height='60px' alignItems='center'>
-      <Box p='2'>
-        <Heading size='md'>Chakra App</Heading>
+    <Flex height='60px' alignItems='center' backgroundColor='rgb(113,113,113)'>
+      <Box px='4' py='2'>
+        <Heading size='md' color='whiteAlpha.900'>
+          Chakra App
+        </Heading>
       </Box>
       <Spacer />
-      <Box>
-        <Avatar
-          size='md'
-          name='Prosper Otemuyiwa'
-          src='https://bit.ly/prosper-baba'
-        ></Avatar>
-        <Button colorScheme='teal'>add new</Button>
-      </Box>
+      <Avatar
+        size='sm'
+        name='Prosper Otemuyiwa'
+        src='https://bit.ly/prosper-baba'
+      ></Avatar>
+      <Button size='sm' mx='4'>
+        add new
+      </Button>
     </Flex>
   );
 };
