@@ -14,7 +14,7 @@ export const Books: React.FC<Props> = ({ yearMonth, bookReviews }) => {
           <Book bookReview={bookReview} key={bookReview.readAt.toString()} />
         ))}
       </Flex>
-      <Text margin='auto'>
+      <Text textAlign='center' color='gray.700' fontWeight='semibold' py='1'>
         {yearMonth === generateYearMonth(new Date()) ? 'now' : yearMonth}
       </Text>
     </Box>
