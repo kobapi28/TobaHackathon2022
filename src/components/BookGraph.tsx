@@ -20,7 +20,12 @@ export const BookGraph: React.FC<Props> = ({
       >
         {userName}
       </Heading>
-      <Flex gap='80px' overflowX='auto' whiteSpace='nowrap'>
+      <Flex
+        gap='80px'
+        overflowX='auto'
+        whiteSpace='nowrap'
+        flexDirection='row-reverse'
+      >
         {monthlyBookReviews.map((monthlyBookReview) => (
           <Books
             yearMonth={monthlyBookReview.yearMonth}
