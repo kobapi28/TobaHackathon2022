@@ -8,7 +8,7 @@ type Props = MonthlyBookReviews;
 
 export const Books: React.FC<Props> = ({ yearMonth, bookReviews }) => {
   return (
-    <Box>
+    <Box flexShrink='0' display='inline-block'>
       <Flex gap='8px'>
         {bookReviews.map((bookReview) => (
           <Book bookReview={bookReview} key={bookReview.readAt.toString()} />
