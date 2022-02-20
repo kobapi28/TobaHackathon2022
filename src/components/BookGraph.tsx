@@ -11,8 +11,16 @@ export const BookGraph: React.FC<Props> = ({
 }) => {
   return (
     <Box backgroundColor='gray.100' px='4' py='2' mx='4' my='0'>
-      <Heading as='h2'>{userName}</Heading>
-      <Flex gap='80px'>
+      <Heading
+        as='h3'
+        size='lg'
+        color='gray.700'
+        paddingBottom='2'
+        fontWeight='semibold'
+      >
+        {userName}
+      </Heading>
+      <Flex gap='80px' overflowX='auto' whiteSpace='nowrap'>
         {monthlyBookReviews.map((monthlyBookReview) => (
           <Books
             yearMonth={monthlyBookReview.yearMonth}
