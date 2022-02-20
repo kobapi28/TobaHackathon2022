@@ -47,10 +47,12 @@ export const Book: React.FC<Props> = ({ bookReview }) => {
         position='absolute'
         left='0px'
         bottom='0px'
-        background='gray.600'
+        background='rgba(247, 250, 252, 0.9)'
         width='100%'
       >
-        <Rating review={bookReview.review} />
+        <Box px='1' py='2'>
+          <Rating review={bookReview.review} />
+        </Box>
       </Box>
     </Box>
   );

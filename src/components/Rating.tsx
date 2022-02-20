@@ -21,14 +21,18 @@ export const Rating: React.FC<Props> = ({ review, setReview }) => {
         return num <= review ? (
           <Icon
             as={AiFillStar}
-            color='yellow.600'
+            color='yellow.500'
+            w={6}
+            h={6}
             key={num}
             onClick={() => updateReview(num)}
           />
         ) : (
           <Icon
             as={AiOutlineStar}
-            color='yellow.600'
+            color='yellow.500'
+            w={6}
+            h={6}
             key={num}
             onClick={() => updateReview(num)}
           />
