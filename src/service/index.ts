@@ -1,7 +1,8 @@
-import { IBookReviewClient } from './Interface';
+import { IBookReviewClient, IAuthClient } from './Interface';
 import { Book } from '../types/Book';
 import { BookReview } from '../types/BookReview';
 import { BooksReadByEachUser } from '../types/BooksReadEachUser';
+import { login, logout } from './Auth';
 const searchMock = async (title: string): Promise<Array<Book>> => {
   return [
     {
@@ -141,4 +142,9 @@ export const BookReviewClient: IBookReviewClient = {
   search: searchMock,
   storeBookReview: storeBookReviewMock,
   getBookReviews: getBookReviewsMock,
+};
+
+export const AuthClient: IAuthClient = {
+  login: login,
+  logout: logout,
 };
