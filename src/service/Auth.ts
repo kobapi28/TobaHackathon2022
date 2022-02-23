@@ -10,9 +10,9 @@ import { AuthUser } from '../types/AuthUser';
 export const login = async (): Promise<AuthUser> => {
   const auth = getAuth();
   return signInWithPopup(auth, provider).then((credential) => {
-    const userinfo = getAdditionalUserInfo(credential);
+    const userInfo = getAdditionalUserInfo(credential);
     return {
-      id: userinfo?.username ?? '',
+      id: userInfo?.username ?? '',
       uid: credential.user.uid ?? '',
       name: credential.user.displayName ?? '',
       img: credential.user.photoURL ?? '',
