@@ -1,4 +1,4 @@
-import firebase from 'firebase/app';
+import { initializeApp } from 'firebase/app';
 import { TwitterAuthProvider } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 
@@ -12,7 +12,7 @@ const firebaseConfig = {
   measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENTID,
 };
 
-firebase.initializeApp(firebaseConfig);
+export const app = initializeApp(firebaseConfig);
 
 export const provider = new TwitterAuthProvider();
 export const db = getFirestore();
