@@ -4,10 +4,10 @@ import {
   ModalContent,
   ModalHeader,
   ModalBody,
-  Button,
   ModalCloseButton,
 } from '@chakra-ui/react';
 import { useState } from 'react';
+import { Book } from '../../types/Book';
 import { Review } from './Review';
 import { SelectBook } from './SelectBook';
 
@@ -18,7 +18,7 @@ type Props = {
 };
 
 export const AddNewModal: React.FC<Props> = ({ isOpen, onOpen, onClose }) => {
-  const [isFirstPage, setIsFirstPage] = useState<boolean>(true);
+  const [selectedBook, setSelectedBook] = useState<Book>();
 
   return (
     <Modal
@@ -31,12 +31,15 @@ export const AddNewModal: React.FC<Props> = ({ isOpen, onOpen, onClose }) => {
         <ModalHeader>新しく読んだ本を登録します</ModalHeader>
         <ModalCloseButton />
         <ModalBody pb={6}>
-          {isFirstPage ? <SelectBook /> : <Review />}
+          {!selectedBook ? (
+            <SelectBook setSelectedBook={setSelectedBook} />
+          ) : (
+            <Review
+              selectedBook={selectedBook}
+              setSelectedBook={setSelectedBook}
+            />
+          )}
         </ModalBody>
-
-        <Button onClick={() => setIsFirstPage(false)}>
-          これが本になります
-        </Button>
       </ModalContent>
     </Modal>
   );
