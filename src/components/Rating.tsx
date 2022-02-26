@@ -15,27 +15,39 @@ export const Rating: React.FC<Props> = ({ review, setReview }) => {
     if (setReview) setReview(num);
   };
 
-  return (
+  return setReview ? (
     <Flex>
       {array.map((num) => {
         return num <= review ? (
           <Icon
             as={AiFillStar}
             color='yellow.500'
-            w={6}
-            h={6}
+            w={12}
+            h={12}
             key={num}
             onClick={() => updateReview(num)}
+            cursor='pointer'
           />
         ) : (
           <Icon
             as={AiOutlineStar}
             color='yellow.500'
-            w={6}
-            h={6}
+            w={12}
+            h={12}
             key={num}
             onClick={() => updateReview(num)}
+            cursor='pointer'
           />
+        );
+      })}
+    </Flex>
+  ) : (
+    <Flex>
+      {array.map((num) => {
+        return num <= review ? (
+          <Icon as={AiFillStar} color='yellow.500' w={6} h={6} key={num} />
+        ) : (
+          <Icon as={AiOutlineStar} color='yellow.500' w={6} h={6} key={num} />
         );
       })}
     </Flex>

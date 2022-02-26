@@ -1,5 +1,5 @@
-import { Box, Flex, Input } from '@chakra-ui/react';
-import { useEffect, useState } from 'react';
+import { Box, Flex, Input, Text } from '@chakra-ui/react';
+import { ChangeEvent, useState } from 'react';
 import { BookReviewClient } from '../../service';
 import { Book } from '../../types/Book';
 import { BookInModal } from './BookInModal';
@@ -10,18 +10,25 @@ type Props = {
 
 export const SelectBook: React.FC<Props> = ({ setSelectedBook }) => {
   const [books, setBooks] = useState<Book[]>();
-  // とりあえず初期化時に
-  // TODO: 検索ボックスとの連携
-  useEffect(() => {
-    const value = 'hoge';
-    BookReviewClient.search(value).then((res) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    // event.target.value でパラメータ取得。
+    // そのパラメータで検索かける
+    BookReviewClient.search(event.target.value).then((res) => {
       setBooks(res);
     });
-  }, []);
+  };
+
   return (
     <Box>
-      <Input placeholder='例) TypeScript' />
-      <Flex gap='8px'>
+      <Text color='gray.700' fontWeight='semibold'>
+        本のタイトルを入力
+      </Text>
+      <Input
+        mt='2'
+        placeholder='例) TypeScript'
+        onChange={(e) => handleChange(e)}
+      />
+      <Flex gap='8px' mt='4'>
         {books?.map((book) => (
           <BookInModal
             book={book}

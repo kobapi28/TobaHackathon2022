@@ -19,15 +19,20 @@ type Props = {
 
 export const AddNewModal: React.FC<Props> = ({ isOpen, onOpen, onClose }) => {
   const [selectedBook, setSelectedBook] = useState<Book>();
+  const closeDialog = () => {
+    onClose();
+    setSelectedBook(undefined);
+  };
 
   return (
     <Modal
       closeOnOverlayClick={false}
+      size='4xl'
       isOpen={isOpen}
-      onClose={() => onClose()}
+      onClose={closeDialog}
     >
       <ModalOverlay />
-      <ModalContent>
+      <ModalContent height='60%'>
         <ModalHeader>新しく読んだ本を登録します</ModalHeader>
         <ModalCloseButton />
         <ModalBody pb={6}>
