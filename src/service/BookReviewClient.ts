@@ -1,7 +1,6 @@
 import { BooksReadByEachUser } from '../types/BooksReadEachUser';
 import { MonthlyBookReviews } from '../types/MonthlyBookReviews';
 import { FirestoreClient } from './FirestoreClient';
-import { getFriends } from './TwitterApiClient';
 import { Friend } from '../types/Friend';
 import { generateYearMonth } from '../utils/generateYearMonth';
 
@@ -40,7 +39,7 @@ const getBooksReadByEachUserFromFriend = async (
 export const getBookReviews = async (
   userId: string
 ): Promise<Array<BooksReadByEachUser>> => {
-  const friends = await getFriends(userId);
+  const friends = await FirestoreClient.getFriends(userId);
 
   return await Promise.all(
     friends.map(async (friend) => {
