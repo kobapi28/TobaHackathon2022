@@ -2,7 +2,7 @@ import { BookReview } from '../types/BookReview';
 const getBookReviews = async (userId: string): Promise<Array<BookReview>> => {
   return [
     {
-      userName: 'sample',
+      userId: 'sample',
       review: 1,
       book: {
         title: 'titile1',
@@ -12,7 +12,7 @@ const getBookReviews = async (userId: string): Promise<Array<BookReview>> => {
       readAt: new Date(2021, 11, 15, 22, 30),
     },
     {
-      userName: 'sample',
+      userId: 'sample',
       review: 2,
       book: {
         title: 'titile2',
@@ -22,7 +22,7 @@ const getBookReviews = async (userId: string): Promise<Array<BookReview>> => {
       readAt: new Date(2022, 0, 15, 22, 30),
     },
     {
-      userName: 'sample',
+      userId: 'sample',
       review: 3,
       book: {
         title: 'titile3',
@@ -32,7 +32,7 @@ const getBookReviews = async (userId: string): Promise<Array<BookReview>> => {
       readAt: new Date(2022, 1, 15, 22, 30),
     },
     {
-      userName: 'sample',
+      userId: 'sample',
       review: 4,
       book: {
         title: 'titile4',
