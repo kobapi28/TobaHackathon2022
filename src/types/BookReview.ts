@@ -2,7 +2,7 @@ import { Book } from './Book';
 
 export type BookReview = {
   book: Book;
-  userName: string;
+  userId: string;
   review: number;
   readAt: Date;
 };
