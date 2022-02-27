@@ -42,6 +42,7 @@ export const AddNewModal: React.FC<Props> = ({ isOpen, onOpen, onClose }) => {
             <Review
               selectedBook={selectedBook}
               setSelectedBook={setSelectedBook}
+              onClose={onClose}
             />
           )}
         </ModalBody>

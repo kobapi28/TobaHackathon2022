@@ -7,6 +7,7 @@ import { Rating } from '../Rating';
 type Props = {
   selectedBook: Book;
   setSelectedBook: React.Dispatch<React.SetStateAction<Book | undefined>>;
+  onClose: Function;
 };
 
 type ImageHeightWidth = {
@@ -14,7 +15,11 @@ type ImageHeightWidth = {
   width: number;
 };
 
-export const Review: React.FC<Props> = ({ selectedBook, setSelectedBook }) => {
+export const Review: React.FC<Props> = ({
+  selectedBook,
+  setSelectedBook,
+  onClose,
+}) => {
   const [review, setReview] = useState<number>(1);
   const [imageHeightWidth, setImageHeightWidth] = useState<ImageHeightWidth>({
     height: 0,
@@ -42,6 +47,7 @@ export const Review: React.FC<Props> = ({ selectedBook, setSelectedBook }) => {
       readAt: new Date(),
       book: selectedBook,
     });
+    onClose();
   };
 
   return (
