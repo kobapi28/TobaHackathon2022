@@ -40,11 +40,11 @@ const getBooksReadByEachUserFromFriend = async (
 export const getBookReviews = async (
   userId: string
 ): Promise<Array<BooksReadByEachUser>> => {
-  let res: Array<BooksReadByEachUser> = [];
   const friends = await getFriends(userId);
 
-  friends.map((friend) =>
-    getBooksReadByEachUserFromFriend(friend).then((b) => res.push(b))
+  return await Promise.all(
+    friends.map(async (friend) => {
+      return await getBooksReadByEachUserFromFriend(friend);
+    })
   );
-  return res;
 };
