@@ -3,17 +3,14 @@ import { MonthlyBookReviews } from '../types/MonthlyBookReviews';
 import { FirestoreClient } from './FirestoreClient';
 import { getFriends } from './TwitterApiClient';
 import { Friend } from '../types/Friend';
-
-const date2yearMonth = (date: Date): string => {
-  return `${date.getFullYear()}.${date.getMonth()}`;
-};
+import { generateYearMonth } from '../utils/generateYearMonth';
 
 const getBooksReadByEachUserFromFriend = async (
   friend: Friend
 ): Promise<BooksReadByEachUser> => {
-  var bookReviews = await FirestoreClient.getBookReviews(friend.id); //TODO: length==0ならerror
+  let bookReviews = await FirestoreClient.getBookReviews(friend.id); //TODO: length==0ならerror
 
-  var monthlyBookReviews: Array<MonthlyBookReviews> = [];
+  const monthlyBookReviews: Array<MonthlyBookReviews> = [];
 
   const now = new Date();
   const date = new Date(now.getFullYear(), now.getMonth());
@@ -25,7 +22,7 @@ const getBooksReadByEachUserFromFriend = async (
 
     if (newer_review.length !== 0) {
       monthlyBookReviews.push({
-        yearMonth: date2yearMonth(date),
+        yearMonth: generateYearMonth(date),
         bookReviews: newer_review,
       });
     }
@@ -43,7 +40,7 @@ const getBooksReadByEachUserFromFriend = async (
 export const getBookReviews = async (
   userId: string
 ): Promise<Array<BooksReadByEachUser>> => {
-  var res: Array<BooksReadByEachUser> = [];
+  let res: Array<BooksReadByEachUser> = [];
   const friends = await getFriends(userId);
 
   friends.map((friend) =>
