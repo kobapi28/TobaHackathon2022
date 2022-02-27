@@ -44,6 +44,9 @@ const babelRuntimeRegenerator = require.resolve('@babel/runtime/regenerator', {
   paths: [babelRuntimeEntry],
 });
 
+// webpack5系で自動的に入らなくなったもの
+const NodePolyfillPlugin = require('node-polyfill-webpack-plugin')
+
 // Some apps do not need the benefits of saving a web request, so not inlining the chunk
 // makes for a smoother build process.
 const shouldInlineRuntimeChunk = process.env.INLINE_RUNTIME_CHUNK !== 'false';
@@ -147,6 +150,7 @@ module.exports = function (webpackEnv) {
                   // so that it honors browserslist config in package.json
                   // which in turn let's users customize the target behavior as per their needs.
                   'postcss-normalize',
+                  new NodePolyfillPlugin()
                 ]
               : [
                   'tailwindcss',
@@ -160,6 +164,7 @@ module.exports = function (webpackEnv) {
                       stage: 3,
                     },
                   ],
+                  new NodePolyfillPlugin()
                 ],
           },
           sourceMap: isEnvProduction ? shouldUseSourceMap : isEnvDevelopment,
