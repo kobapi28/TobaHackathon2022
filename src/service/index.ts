@@ -23,8 +23,8 @@ const searchMock = async (title: string): Promise<Array<Book>> => {
   });
 };
 
-const storeBookReviewMock = async (bookReview: BookReview): Promise<null> => {
-  return null;
+const storeBookReviewMock = async (bookReview: BookReview): Promise<void> => {
+  // TODO
 };
 
 export const BookReviewClient: IBookReviewClient = {
