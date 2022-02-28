@@ -9,6 +9,8 @@ import {
   where,
   query,
   Timestamp,
+  doc,
+  setDoc,
 } from 'firebase/firestore';
 
 const createCollection = <T = DocumentData>(collectionName: string) => {
@@ -41,7 +43,9 @@ const getBookReviews = async (userId: string): Promise<Array<BookReview>> => {
 };
 
 const addBookReviews = async (bookReview: BookReview): Promise<void> => {
-  //TODO
+  const bookReviewsFirestoreCol = createCollection<BookReview>('bookReviews');
+  const bookReviewRef = doc(bookReviewsFirestoreCol);
+  await setDoc(bookReviewRef, bookReview);
 };
 
 export interface IFirestoreClient {

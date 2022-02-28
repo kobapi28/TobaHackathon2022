@@ -1,8 +1,7 @@
 import { IBookReviewClient, IAuthClient } from './Interface';
 import { Book } from '../types/Book';
-import { BookReview } from '../types/BookReview';
 import { login, logout } from './Auth';
-import { getBookReviews } from './BookReviewClient';
+import { getBookReviews, storeBookReview } from './BookReviewClient';
 const searchMock = async (title: string): Promise<Array<Book>> => {
   return new Promise((resolve) => {
     setTimeout(() => {
@@ -23,13 +22,9 @@ const searchMock = async (title: string): Promise<Array<Book>> => {
   });
 };
 
-const storeBookReviewMock = async (bookReview: BookReview): Promise<void> => {
-  // TODO
-};
-
 export const BookReviewClient: IBookReviewClient = {
   search: searchMock,
-  storeBookReview: storeBookReviewMock,
+  storeBookReview: storeBookReview,
   getBookReviews: getBookReviews,
 };
 

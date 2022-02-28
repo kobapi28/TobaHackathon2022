@@ -42,7 +42,7 @@ export const Review: React.FC<Props> = ({
   const register = () => {
     // TODO: エラー処理
     BookReviewClient.storeBookReview({
-      userId: '',
+      userId: 'sample',
       review: review,
       readAt: new Date(),
       book: selectedBook,
