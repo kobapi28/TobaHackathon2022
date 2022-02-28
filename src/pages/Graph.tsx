@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { BookGraph } from '../components';
 import { BookReviewClient } from '../service/index';
 import { BooksReadByEachUser } from '../types/BooksReadEachUser';
+import { getFriends } from '../service/TwitterApiClient';
 
 export const Graph = () => {
   const [booksReadByEachUser, setBooksReadByEachUser] = useState<
@@ -12,6 +13,7 @@ export const Graph = () => {
   useEffect(() => {
     // ここのuserIdをstoreからとってくるとかそういう処理は必要
     const userId = 'sample';
+    console.log(getFriends('oonya2002'));
     BookReviewClient.getBookReviews(userId)
       .then((res) => {
         setBooksReadByEachUser(res);

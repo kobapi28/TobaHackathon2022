@@ -1,4 +1,5 @@
 import { BookReview } from '../types/BookReview';
+import { Friend } from '../types/Friend';
 const getBookReviews = async (userId: string): Promise<Array<BookReview>> => {
   return [
     {
@@ -48,12 +49,27 @@ const addBookReviews = async (bookReview: BookReview): Promise<void> => {
   //TODO
 };
 
+const getFriends = async (userId: string): Promise<Array<Friend>> => {
+  return [
+    {
+      id: 'shoma28_',
+      name: 'コバショウ',
+    },
+    {
+      id: '_takumma',
+      name: 'いちかわ',
+    },
+  ];
+};
+
 export interface IFirestoreClient {
   getBookReviews: (userId: string) => Promise<Array<BookReview>>;
   addBookReviews: (bookReview: BookReview) => Promise<void>;
+  getFriends: (userId: string) => Promise<Array<Friend>>;
 }
 
 export const FirestoreClient: IFirestoreClient = {
   getBookReviews: getBookReviews,
   addBookReviews: addBookReviews,
+  getFriends: getFriends,
 };
