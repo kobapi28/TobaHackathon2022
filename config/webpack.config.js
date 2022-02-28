@@ -132,7 +132,6 @@ module.exports = function (webpackEnv) {
           postcssOptions: {
             // Necessary for external CSS imports to work
             // https://github.com/facebook/create-react-app/issues/2677
-            ident: 'postcss',
             config: false,
             plugins: !useTailwind
               ? [
@@ -322,6 +321,23 @@ module.exports = function (webpackEnv) {
           'scheduler/tracing': 'scheduler/tracing-profiling',
         }),
         ...(modules.webpackAliases || {}),
+        http: 'stream-http',
+        https: 'https-browserify',
+        path: 'path-browserify',
+        zlib: 'browserify-zlib',
+        buffer: 'buffer',
+        stream: 'stream-browserify',
+        crypto: 'crypto-browserify',
+        util: 'util'
+      },
+      fallback: {
+        http: false,
+        https: false,
+        path: false,
+        zlib: false,
+        fs: false,
+        buffer: false,
+        util: false
       },
       plugins: [
         // Prevents users from importing files from outside of src/ (or node_modules/).
