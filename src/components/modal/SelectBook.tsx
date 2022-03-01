@@ -28,7 +28,7 @@ export const SelectBook: React.FC<Props> = ({ setSelectedBook }) => {
         placeholder='例) TypeScript'
         onChange={(e) => handleChange(e)}
       />
-      <Flex gap='8px' mt='4'>
+      <Flex gap='8px' mt='4' wrap='wrap'>
         {books?.map((book) => (
           <BookInModal
             book={book}

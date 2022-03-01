@@ -33,7 +33,11 @@ export const BookInModal: React.FC<Props> = ({ book, setSelectedBook }) => {
   };
 
   return (
-    <Box position='relative' onClick={() => setSelectedBook(book)}>
+    <Box
+      position='relative'
+      flexShrink='0'
+      onClick={() => setSelectedBook(book)}
+    >
       <Image
         id={book.link}
         htmlHeight={height + 'px'}
