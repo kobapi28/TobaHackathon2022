@@ -33,7 +33,7 @@ export const Book: React.FC<Props> = ({ bookReview }) => {
   };
 
   const purchaseSiteTransition = () => {
-    window.location.href = bookReview.book.link;
+    window.open(bookReview.book.link, '_blank');
   };
 
   return (
