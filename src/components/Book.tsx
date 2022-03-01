@@ -32,8 +32,12 @@ export const Book: React.FC<Props> = ({ bookReview }) => {
     return `${(imageHeightWidth.width / imageHeightWidth.height) * height}px`;
   };
 
+  const purchaseSiteTransition = () => {
+    window.location.href = bookReview.book.link;
+  };
+
   return (
-    <Box position='relative'>
+    <Box position='relative' cursor='pointer' onClick={purchaseSiteTransition}>
       <Image
         id={bookReview.book.link}
         htmlHeight={height + 'px'}
