@@ -9,7 +9,7 @@ type Item = {
     affiliateUrl: string;
     author: string;
     itemUrl: string;
-    smallImageUrl: string; //largeImageUrl, mediumImageUrl
+    largeImageUrl: string;
     title: string;
   };
 };
@@ -26,7 +26,7 @@ export const search = async (title: string): Promise<Array<Book>> => {
     return {
       title: i.Item.title,
       link: i.Item.itemUrl,
-      img: i.Item.smallImageUrl,
+      img: i.Item.largeImageUrl,
     };
   });
 
