@@ -32,7 +32,7 @@ export const AddNewModal: React.FC<Props> = ({ isOpen, onOpen, onClose }) => {
       onClose={closeDialog}
     >
       <ModalOverlay />
-      <ModalContent height='60%'>
+      <ModalContent>
         <ModalHeader>新しく読んだ本を登録します</ModalHeader>
         <ModalCloseButton />
         <ModalBody pb={6}>
