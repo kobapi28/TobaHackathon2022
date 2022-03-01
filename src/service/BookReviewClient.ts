@@ -4,6 +4,7 @@ import { FirestoreClient } from './FirestoreClient';
 import { getFriends } from './TwitterApiClient';
 import { Friend } from '../types/Friend';
 import { generateYearMonth } from '../utils/generateYearMonth';
+import { BookReview } from '../types/BookReview';
 
 const getBooksReadByEachUserFromFriend = async (
   friend: Friend
@@ -47,4 +48,10 @@ export const getBookReviews = async (
       return await getBooksReadByEachUserFromFriend(friend);
     })
   );
+};
+
+export const storeBookReview = async (
+  bookReview: BookReview
+): Promise<void> => {
+  return FirestoreClient.addBookReviews(bookReview);
 };

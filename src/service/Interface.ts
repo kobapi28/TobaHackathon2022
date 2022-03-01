@@ -6,7 +6,7 @@ import { Auth } from 'firebase/auth';
 
 export interface IBookReviewClient {
   search: (title: string) => Promise<Array<Book>>;
-  storeBookReview: (bookReview: BookReview) => Promise<null>;
+  storeBookReview: (bookReview: BookReview) => Promise<void>;
   getBookReviews: (userId: string) => Promise<Array<BooksReadByEachUser>>;
 }
 
