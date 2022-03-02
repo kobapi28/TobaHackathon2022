@@ -1,5 +1,6 @@
 import { Box, Button, Flex, Image, Link, Text } from '@chakra-ui/react';
 import { useState } from 'react';
+import { useAuth } from '../../providers';
 import { BookReviewClient } from '../../service';
 import { Book } from '../../types/Book';
 import { Rating } from '../Rating';
@@ -25,6 +26,7 @@ export const Review: React.FC<Props> = ({
     height: 0,
     width: 0,
   });
+  const auth = useAuth();
 
   const height: number = window.innerHeight * 0.3;
 
@@ -41,12 +43,14 @@ export const Review: React.FC<Props> = ({
 
   const register = () => {
     // TODO: エラー処理
-    BookReviewClient.storeBookReview({
-      userId: 'sample',
-      review: review,
-      readAt: new Date(),
-      book: selectedBook,
-    });
+    if (auth.user?.id) {
+      BookReviewClient.storeBookReview({
+        userId: auth.user?.id,
+        review: review,
+        readAt: new Date(),
+        book: selectedBook,
+      });
+    }
     onClose();
   };
 
