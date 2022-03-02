@@ -14,19 +14,19 @@ type AuthContextType = {
 const AuthContext = createContext<AuthContextType>({} as AuthContextType);
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-  const [user, setUser] = useState<AuthUser | null>(null);
+  const [authUser, setAuthUser] = useState<AuthUser | null>(null);
   const [signInCheck, setSignInCheck] = useState(false);
 
   const login = (callback: VoidFunction) => {
     return AuthClient.login().then((res: AuthUser) => {
-      setUser(res);
+      setAuthUser(res);
       callback();
     });
   };
 
   const logout = (callback: VoidFunction) => {
     return AuthClient.logout(auth).then((res) => {
-      setUser(null);
+      setAuthUser(null);
       callback();
     });
   };
@@ -35,7 +35,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         // TODO: idをなにかしらで取得する
-        setUser({
+        setAuthUser({
           id: 'sample',
           uid: user.uid,
           name: user.displayName ?? '',
@@ -48,7 +48,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     });
   }, []);
 
-  const value: AuthContextType = { user, login, logout };
+  const value: AuthContextType = { user: authUser, login, logout };
 
   if (signInCheck) {
     return (
