@@ -1,3 +1,4 @@
+import { onAuthStateChanged } from 'firebase/auth';
 import React, { useContext, useState, createContext, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
 import { AuthClient } from '../service';
@@ -31,8 +32,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   useEffect(() => {
-    auth.onAuthStateChanged(async (user) => {
+    onAuthStateChanged(auth, (user) => {
       if (user) {
+        // TODO: idをなにかしらで取得する
         setUser({
           id: '',
           uid: user.uid,
