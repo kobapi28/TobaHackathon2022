@@ -1,7 +1,7 @@
-import { getAuth } from 'firebase/auth';
-import React, { useContext, useState, createContext } from 'react';
+import React, { useContext, useState, createContext, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
 import { AuthClient } from '../service';
+import { auth } from '../service/Auth';
 import { AuthUser } from '../types/AuthUser';
 
 type AuthContextType = {
@@ -14,6 +14,7 @@ const AuthContext = createContext<AuthContextType>({} as AuthContextType);
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<AuthUser | null>(null);
+  const [signInCheck, setSignInCheck] = useState(false);
 
   const login = (callback: VoidFunction) => {
     return AuthClient.login().then((res: AuthUser) => {
@@ -23,15 +24,37 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   const logout = (callback: VoidFunction) => {
-    return AuthClient.logout(getAuth()).then((res) => {
+    return AuthClient.logout(auth).then((res) => {
       setUser(null);
       callback();
     });
   };
 
+  useEffect(() => {
+    auth.onAuthStateChanged(async (user) => {
+      if (user) {
+        setUser({
+          id: '',
+          uid: user.uid,
+          name: user.displayName ?? '',
+          img: user.photoURL ?? '',
+        });
+        setSignInCheck(true);
+      } else {
+        setSignInCheck(true);
+      }
+    });
+  }, []);
+
   const value: AuthContextType = { user, login, logout };
 
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+  if (signInCheck) {
+    return (
+      <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
+    );
+  } else {
+    return <p>loading...</p>;
+  }
 };
 
 export const useAuth = () => {
@@ -39,8 +62,7 @@ export const useAuth = () => {
 };
 
 export const RequireAuth = ({ children }: { children: any }) => {
-  const auth = useAuth();
-  if (!auth.user) {
+  if (!auth.currentUser) {
     return <Navigate to='/about' />;
   }
   return children;
