@@ -8,9 +8,11 @@ import {
   Avatar,
   useDisclosure,
 } from '@chakra-ui/react';
+import { useAuth } from '../providers';
 import { AddNewModal } from './modal/AddNewModal';
 
 export const Header = () => {
+  const auth = useAuth();
   const clickUserAvatar = () => {
     // ユーザーページへ遷移
     console.log('ユーザーページへの遷移');
@@ -32,16 +34,22 @@ export const Header = () => {
           </Heading>
         </Box>
         <Spacer />
-        <Avatar
-          size='sm'
-          name='Prosper Otemuyiwa'
-          src='https://bit.ly/prosper-baba'
-          onClick={() => clickUserAvatar()}
-          cursor='pointer'
-        ></Avatar>
-        <Button size='sm' mx='4' onClick={() => onOpen()}>
-          add new
-        </Button>
+        {auth.user ? (
+          <Box>
+            <Avatar
+              size='sm'
+              name='Prosper Otemuyiwa'
+              src='https://bit.ly/prosper-baba'
+              onClick={() => clickUserAvatar()}
+              cursor='pointer'
+            ></Avatar>
+            <Button size='sm' mx='4' onClick={() => onOpen()}>
+              add new
+            </Button>
+          </Box>
+        ) : (
+          <></>
+        )}
       </Flex>
       <AddNewModal isOpen={isOpen} onOpen={onOpen} onClose={onClose} />
     </>
