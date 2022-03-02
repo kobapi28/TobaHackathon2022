@@ -20,15 +20,12 @@ export const search = async (title: string): Promise<Array<Book>> => {
     title
   )}`;
 
-  let books: Array<Book>;
   const { data } = await axios.get<Res>(url);
-  books = data.Items.map((i) => {
+  return data.Items.map((i) => {
     return {
       title: i.Item.title,
       link: i.Item.itemUrl,
       img: i.Item.largeImageUrl,
     };
   });
-
-  return books;
 };
