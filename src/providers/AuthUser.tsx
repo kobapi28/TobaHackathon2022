@@ -36,7 +36,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       if (user) {
         // TODO: idをなにかしらで取得する
         setUser({
-          id: '',
+          id: 'sample',
           uid: user.uid,
           name: user.displayName ?? '',
           img: user.photoURL ?? '',
