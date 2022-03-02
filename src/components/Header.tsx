@@ -48,7 +48,7 @@ export const Header = () => {
             <Avatar
               size='sm'
               name='Prosper Otemuyiwa'
-              src='https://bit.ly/prosper-baba'
+              src={auth.user.img}
               onClick={() => clickUserAvatar()}
               cursor='pointer'
             ></Avatar>
