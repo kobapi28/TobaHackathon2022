@@ -10,12 +10,16 @@ type Props = {
 
 export const SelectBook: React.FC<Props> = ({ setSelectedBook }) => {
   const [books, setBooks] = useState<Book[]>();
+  const [lastTime, setLastTime] = useState<number>(0);
+
+  const interval = 500;
+
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    // event.target.value でパラメータ取得。
-    // そのパラメータで検索かける
-    BookReviewClient.search(event.target.value).then((res) => {
-      setBooks(res);
-    });
+    const now = Date.now();
+    if (now - lastTime > interval) {
+      setLastTime(now);
+      BookReviewClient.search(event.target.value).then(setBooks);
+    }
   };
 
   return (
