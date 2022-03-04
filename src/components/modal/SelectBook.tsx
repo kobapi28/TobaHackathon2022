@@ -18,9 +18,7 @@ export const SelectBook: React.FC<Props> = ({ setSelectedBook }) => {
     const now = Date.now();
     if (now - lastTime > interval) {
       setLastTime(now);
-      BookReviewClient.search(event.target.value).then((res) => {
-        setBooks(res);
-      });
+      BookReviewClient.search(event.target.value).then(setBooks);
     }
   };
 
