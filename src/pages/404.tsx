@@ -1,8 +1,10 @@
+import { Heading, Text } from '@chakra-ui/react';
+
 // 存在しないところにアクセスした時
 export const NotFound = () => {
   return (
-    <div>
-      <h1>404 Not Found</h1>
-    </div>
+    <Heading color='gray.700' textAlign='center' mt='10'>
+      <Text>404</Text> Not Found
+    </Heading>
   );
 };
