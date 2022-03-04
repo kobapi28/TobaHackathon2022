@@ -1,3 +1,4 @@
+import { useToast } from '@chakra-ui/react';
 import { onAuthStateChanged } from 'firebase/auth';
 import React, { useContext, useState, createContext, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
@@ -16,19 +17,54 @@ const AuthContext = createContext<AuthContextType>({} as AuthContextType);
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [authUser, setAuthUser] = useState<AuthUser | null>(null);
   const [signInCheck, setSignInCheck] = useState(false);
+  const toast = useToast();
 
   const login = (callback: VoidFunction) => {
-    return AuthClient.login().then((res: AuthUser) => {
-      setAuthUser(res);
-      callback();
-    });
+    return AuthClient.login()
+      .then((res: AuthUser) => {
+        setAuthUser(res);
+        callback();
+        toast({
+          title: 'Success!',
+          description: 'You have successfully logged in!',
+          status: 'success',
+          duration: 3000,
+          isClosable: true,
+        });
+      })
+      .catch(() => {
+        toast({
+          title: 'Failed...',
+          description: 'Login failed...',
+          status: 'error',
+          duration: 3000,
+          isClosable: true,
+        });
+      });
   };
 
   const logout = (callback: VoidFunction) => {
-    return AuthClient.logout(auth).then((res) => {
-      setAuthUser(null);
-      callback();
-    });
+    return AuthClient.logout(auth)
+      .then((res) => {
+        setAuthUser(null);
+        callback();
+        toast({
+          title: 'Success!',
+          description: 'You are logged out!',
+          status: 'success',
+          duration: 3000,
+          isClosable: true,
+        });
+      })
+      .catch(() => {
+        toast({
+          title: 'Failed...',
+          description: 'Logout failed... Please try again',
+          status: 'error',
+          duration: 3000,
+          isClosable: true,
+        });
+      });
   };
 
   useEffect(() => {
