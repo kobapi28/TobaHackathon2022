@@ -6,8 +6,8 @@ export const getFriends = async (twitterId: string): Promise<Array<Friend>> => {
       name: 'コバショウ',
     },
     {
-      id: '_takumma',
-      name: 'いちかわ',
+      id: 'sample', //_takumma
+      name: 'こーや',
     },
   ];
 };
