@@ -75,7 +75,12 @@ export const Review: React.FC<Props> = ({
           >
             {selectedBook.title}
           </Text>
-          <Link fontSize='16px' color='gray.700'>
+          <Link
+            fontSize='16px'
+            color='gray.700'
+            href={selectedBook.link}
+            isExternal
+          >
             {selectedBook.link}
           </Link>
           <Box mt='4'>
