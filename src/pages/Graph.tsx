@@ -10,7 +10,8 @@ export const Graph = () => {
     // ここのuserIdをstoreからとってくるとかそういう処理は必要
     const userId = 'sample';
     book.fetchReadBook(userId);
-  }, [book]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <div>
       {book.booksReadByEachUser.map((booksReadByUser) => (
