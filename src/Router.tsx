@@ -5,36 +5,39 @@ import { About } from './pages/About';
 import { Graph } from './pages/Graph';
 import { User } from './pages/User';
 import { AuthProvider, RequireAuth } from './providers';
+import { BookProvider } from './providers/Books';
 
 export const Router = () => {
   return (
     <AuthProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path='/' element={<App />}>
-            <Route path='/about' element={<About />} />
-            <Route
-              path='/'
-              element={
-                <RequireAuth>
-                  <Graph />
-                </RequireAuth>
-              }
-            />
-            <Route path='/users'>
+      <BookProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path='/' element={<App />}>
+              <Route path='/about' element={<About />} />
               <Route
-                path=':userId'
+                path='/'
                 element={
                   <RequireAuth>
-                    <User />
+                    <Graph />
                   </RequireAuth>
                 }
               />
+              <Route path='/users'>
+                <Route
+                  path=':userId'
+                  element={
+                    <RequireAuth>
+                      <User />
+                    </RequireAuth>
+                  }
+                />
+              </Route>
+              <Route path='/*' element={<NotFound />} />
             </Route>
-            <Route path='/*' element={<NotFound />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+          </Routes>
+        </BrowserRouter>
+      </BookProvider>
     </AuthProvider>
   );
 };

@@ -1,6 +1,7 @@
 import { Box, Button, Flex, Image, Link, Text } from '@chakra-ui/react';
 import { useState } from 'react';
 import { useAuth } from '../../providers';
+import { useBook } from '../../providers/Books';
 import { BookReviewClient } from '../../service';
 import { Book } from '../../types/Book';
 import { Rating } from '../Rating';
@@ -27,6 +28,7 @@ export const Review: React.FC<Props> = ({
     width: 0,
   });
   const auth = useAuth();
+  const book = useBook();
 
   const height: number = window.innerHeight * 0.3;
 
@@ -49,6 +51,8 @@ export const Review: React.FC<Props> = ({
         review: review,
         readAt: new Date(),
         book: selectedBook,
+      }).then(() => {
+        book.fetchReadBook('sample');
       });
     }
     onClose();

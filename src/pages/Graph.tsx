@@ -1,29 +1,19 @@
 // 一覧ページ
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { BookGraph } from '../components';
-import { BookReviewClient } from '../service/index';
-import { BooksReadByEachUser } from '../types/BooksReadEachUser';
+import { useBook } from '../providers/Books';
 
 export const Graph = () => {
-  const [booksReadByEachUser, setBooksReadByEachUser] = useState<
-    BooksReadByEachUser[]
-  >([]);
+  const book = useBook();
 
   useEffect(() => {
     // ここのuserIdをstoreからとってくるとかそういう処理は必要
     const userId = 'sample';
-    BookReviewClient.getBookReviews(userId)
-      .then((res) => {
-        setBooksReadByEachUser(res);
-      })
-      .catch((err) => {
-        // toastを出す？
-        console.log(err);
-      });
-  }, []);
+    book.fetchReadBook(userId);
+  }, [book]);
   return (
     <div>
-      {booksReadByEachUser.map((booksReadByUser) => (
+      {book.booksReadByEachUser.map((booksReadByUser) => (
         <BookGraph
           monthlyBookReviews={booksReadByUser.monthlyBookReviews}
           userName={booksReadByUser.userName}
